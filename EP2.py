@@ -99,7 +99,15 @@ def inicia_jogo(jogadores, pecas):
 
     return dic 
 
-
+def soma_pecas(pecas):
+    soma = 0
+    if pecas:       
+        for p in pecas:
+            soma += p[0] + p[1]
+        return soma
+    else:
+        return 0
+        
 
 print('Bem-vindo(a) ao jogo de Dominó! O objetivo desse jogo é ficar sem peças na sua mão antes dos outros jogadores.')
 
