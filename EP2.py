@@ -108,7 +108,39 @@ def soma_pecas(pecas):
     else:
         return 0
         
+def adiciona_na_mesa(peca,mesa):
+    if not mesa:
+        mesa.append(peca)
+        return mesa
+        
+    ##Ultima peca e primeira peca   
+    up = mesa[-1][1]
+    pp = mesa[0][0]    
+    
+    ##Para a esquerda ou direita
+    for p in peca:
+        if p == pp or p == up:
+            if p in mesa[0]:
+                posicao_m = mesa[0].index(p)
+                if posicao_m == 0:
+                    if p == peca[1]:
+                        mesa.insert(0,peca)
+                    if p == peca[0]:
+                        peca[0],peca[1] = peca[1], peca[0]
+                        mesa.insert(0,peca)
+            if p in mesa[-1]:
+                posicao_m = mesa[-1].index(p)
+                if posicao_m == 1: 
+                    if p == peca[0]:
+                        mesa.append(peca)
+                    if p == peca[1]:
+                        peca[0],peca[1] = peca[1], peca[0]
+                        mesa.append(peca)
+        
+    return mesa    
 
+
+    
 print('Bem-vindo(a) ao jogo de Dominó! O objetivo desse jogo é ficar sem peças na sua mão antes dos outros jogadores.')
 
 print('Vamos começar!!')
