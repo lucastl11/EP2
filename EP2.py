@@ -1,4 +1,7 @@
 import random
+
+# EP2.1 - Criando peças de dominó
+
 def cria_pecas():
     pecas = []
     i = 0
@@ -17,6 +20,8 @@ def cria_pecas():
 
     random.shuffle(pecas)
     return pecas
+
+# EP2.2 - Iniciando o Jogo de Dominó
 
 def inicia_jogo(jogadores, pecas):
 
@@ -99,6 +104,8 @@ def inicia_jogo(jogadores, pecas):
 
     return dic 
 
+# EP2.4 - Soma peças do dominó
+
 def soma_pecas(pecas):
     soma = 0
     if pecas:       
@@ -138,6 +145,24 @@ def adiciona_na_mesa(peca,mesa):
                         mesa.append(peca)
         
     return mesa    
+
+# EP2.3 - Quem ganhou no dominó?
+
+def verifica_ganhador(dicionario):
+    
+ ganhou = True 
+ for jogador in dicionario.keys():
+        
+        pecas = dicionario[jogador]
+
+        if pecas == []:
+            return jogador
+        else:
+            ganhou = False 
+            
+ if ganhou == False:
+     return -1
+
 
 
     
