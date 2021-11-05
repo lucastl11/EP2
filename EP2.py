@@ -162,6 +162,40 @@ def verifica_ganhador(dicionario):
             
  if ganhou == False:
      return -1
+    
+ # EP2.5 - Posições possíveis da mão
+
+def posicoes_possiveis(mesa, pecas):
+
+ n = len(mesa)
+ 
+ posicoes = []
+ 
+ i = 0
+ 
+ if n == 0:    
+     while i < len(pecas):
+       posicoes.append(i)
+       i +=1
+     return posicoes
+ 
+ else:
+
+  ponta_e = mesa[0][0]
+  ponta_d = mesa[n-1][1]
+ 
+  while i < len(pecas):
+      if pecas[i][0] == ponta_e or pecas[i][0] == ponta_d:
+         posicoes.append(i)
+         i += 1
+      elif pecas[i][1] == ponta_e or pecas[i][1] == ponta_d:
+         posicoes.append(i)
+         i += 1
+      else:
+         i += 1
+
+  return posicoes 
+ 
 
 
 
