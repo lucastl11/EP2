@@ -197,12 +197,93 @@ def posicoes_possiveis(mesa, pecas):
   return posicoes 
  
 
-
-
-    
 print('Bem-vindo(a) ao jogo de Dominó! O objetivo desse jogo é ficar sem peças na sua mão antes dos outros jogadores.')
 
 print('Vamos começar!!')
 
-Jogadores = input('Quantos jogadores irão jogar? (2-4)')
 
+jogo_acabou = 1
+while jogo_acabou != 0:
+
+    jogadores_corretos = 0
+    while jogadores_corretos == 0:
+
+        jogadores = int(input('Quantos jogadores irão jogar? (2-4)'))
+
+        if jogadores < 2 or jogadores > 4:
+            print('Número de jogadores incorreto')
+            jogadores_corretos == 0
+        else:
+            jogadores_corretos = 1
+
+    pecas = cria_pecas()
+
+    dic1= inicia_jogo( jogadores, pecas)
+
+    monte = dic1['monte']
+    print('Esse é o monte: ', monte)
+
+    mesa = dic1['mesa']
+    print('Essa é a mesa: ', mesa)
+
+    player= dic1['jogadores'][0]
+    print('Essa são as suas peças: ', player)
+
+    todos_jog = []
+    i = 0
+    for jogador in dic1['jogadores']:
+        todos_jog.append(i)
+        i += 1
+
+    #randomizar os jogadores    
+    random.shuffle(todos_jog)
+
+    print('A ordem do jogo será: ', todos_jog)
+    ##player é o jogador 0 sempre
+
+    while jogo_acabou != 0:
+        #ainda tem muitas falhas nesse for
+        for jogador in todos_jog:
+            #para o player
+            if jogador == 0:
+                print('Sua vez: ')
+                if not mesa:
+                    print(player)
+                    escolha_qlqr_peca = int(input('Escolha qualquer peça: '))
+                    print('Mesa: ', adiciona_na_mesa(player[escolha_qlqr_peca],mesa))
+                    del player[escolha_qlqr_peca]
+
+                else:
+                    posicoes = posicoes_possiveis(mesa, player)
+                    print(posicoes)
+                    escolha_peca = int(input('Escolha uma das peças possíveis: '))
+                    print('Mesa: ', adiciona_na_mesa(player[escolha_peca],mesa))
+                    del player[escolha_peca]
+
+            #para os outros jogadores
+            else:
+                print('Vez do outro jogador')
+                jogador_da_vez = dic1['jogadores'][jogador]
+                print('pecas do jogador bot: ', jogador_da_vez)
+
+                if not mesa:
+                    peca_bot = random.choice(jogador_da_vez)
+                    print('Mesa: ', adiciona_na_mesa(peca_bot,mesa))
+                    del peca_bot
+                else:
+                    posicoes = posicoes_possiveis(mesa, jogador_da_vez)
+                    peca_bot = random.choice(posicoes)
+                    print(peca_bot)
+                    print('Mesa: ',adiciona_na_mesa(jogador_da_vez[peca_bot],mesa))
+                    del jogador_da_vez[peca_bot]
+    
+    
+    
+    
+    
+    
+    
+    ##print('Mesa: n/' , adiciona_na_mesa(pecas,'mesa'))
+    
+    round = 0
+    jogo_acabou = 0
