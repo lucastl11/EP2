@@ -114,6 +114,8 @@ def soma_pecas(pecas):
         return soma
     else:
         return 0
+
+# EP2.6 - Adicionando peças a mesa num jogo de dominó
         
 def adiciona_na_mesa(peca,mesa):
     if not mesa:
