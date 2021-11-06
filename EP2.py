@@ -258,9 +258,12 @@ while jogo_acabou != 0:
                 else:
                     posicoes = posicoes_possiveis(mesa, player)
                     print(posicoes)
-                    escolha_peca = int(input('Escolha uma das peças possíveis: '))
-                    print('Mesa: ', adiciona_na_mesa(player[escolha_peca],mesa))
-                    del player[escolha_peca]
+                    if not posicoes:
+                       print('Você não tem peças') 
+                    else:    
+                        escolha_peca = int(input('Escolha uma das peças possíveis: '))
+                        print('Mesa: ', adiciona_na_mesa(player[escolha_peca],mesa))
+                        del player[escolha_peca]
 
             #para os outros jogadores
             else:
@@ -274,10 +277,13 @@ while jogo_acabou != 0:
                     del peca_bot
                 else:
                     posicoes = posicoes_possiveis(mesa, jogador_da_vez)
-                    peca_bot = random.choice(posicoes)
-                    print(peca_bot)
-                    print('Mesa: ',adiciona_na_mesa(jogador_da_vez[peca_bot],mesa))
-                    del jogador_da_vez[peca_bot]
+                    if not posicoes:
+                        print('Jogador não tem peças')    
+                    else:
+                        peca_bot = random.choice(posicoes)
+                        print(peca_bot)
+                        print('Mesa: ',adiciona_na_mesa(jogador_da_vez[peca_bot],mesa))
+                        del jogador_da_vez[peca_bot]
     
     
     
