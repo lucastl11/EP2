@@ -1,4 +1,5 @@
 import random
+import time
 
 # Definição das funções:
 
@@ -204,14 +205,27 @@ def adiciona_na_mesa(peca,mesa):
 # Início do jogo
 
 print('.:::Dominó:::.')
+time.sleep(0.75)
 
 print ('Design de Software 2021.2 - Insper')
+time.sleep(0.75)
 
 print('Bem-vindo(a) ao jogo de Dominó! O objetivo desse jogo é ficar sem peças na sua mão antes dos outros jogadores.')
+time.sleep(0.75)
 
 print('Vamos começar!')
+time.sleep(0.75)
 
-jogadores = int(input('Quantidade de jogadores (2-4):'))
+jogadores_corretos = 0
+while jogadores_corretos == 0:
+
+    jogadores = int(input('Quantos jogadores irão jogar? (2-4)'))
+
+    if jogadores < 2 or jogadores > 4:
+        print('Número de jogadores incorreto')
+        jogadores_corretos == 0
+    else:
+        jogadores_corretos = 1
 
 pecas = cria_pecas() # Passo 1: criar as peças do jogo.
 
@@ -236,52 +250,88 @@ while continua == -1: # Situação 1: o jogo continua.
             # Vez do jogador humano:
             if jogador == 0:
                 print('Mesa:', mesa)
-                print('Jogador da vez: você está com {} peças'.format(len(dicionario['jogadores'][0])))
+                time.sleep(1)
+                print('Você está com {} peças'.format(len(dicionario['jogadores'][0])))
+                time.sleep(1)
                 print(dicionario['jogadores'][0])
+                time.sleep(1)
 
                 posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][0]) # Verificar se há posições possíveis.
+                time.sleep(1)
                 
-                if posicoes != []: # Há posições possíveis
+                if posicoes: # Há posições possíveis
                    print('Posições possíveis:', posicoes)
-                   jogada = int(input('Escolha a peça:'))
-
+                   jogada = int(input('Escolha a peça: '))
+                   time.sleep(0.5)
                    while jogada not in posicoes:
                        print('Posição inválida') # VERIFICAR CÓDIGO
                        print('Escolha entre as posições possíveis!')
                        jogada = int(input('Escolha a peça: '))
                    if jogada in posicoes:
                        adiciona_na_mesa(dicionario['jogadores'][0][jogada],mesa)
-                       print ('Colocou:', dicionario['jogadores'][0][jogada])
+                       print ('Colocou: ', dicionario['jogadores'][0][jogada])
+                       time.sleep(0.5)
                        del dicionario['jogadores'][0][jogada]
-                while posicoes == []: # Não há posições possíveis
+
+                while not posicoes: # Não há posições possíveis
                     print('Não tem peças possíveis') 
                     print('Retirar do monte')
-                    aleatoria = random.choice(monte)
-                    del monte[aleatoria]
-                    dicionario['jogadores'][0].append(aleatoria)
+
+                    if monte:
+                        aleatoria = random.choice(monte)
+                        peca_aleatoria = monte.index(aleatoria)
+                        dicionario['jogadores'][0].append(aleatoria)
+                        del monte[peca_aleatoria]
+                        posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][0])
+                        time.sleep(0.5)
+                        print(posicoes)
+                        if posicoes:
+                            peca_dicionario = dicionario['jogadores'][0].index(aleatoria)
+                            adiciona_na_mesa(dicionario['jogadores'][0][peca_dicionario],mesa)
+                            print ('Colocou: ', dicionario['jogadores'][0][peca_dicionario])
+                            time.sleep(0.5)
+                    else:
+                        print('Acabaram as peças do monte')
                 # Verificar se jogador humano ganhou  
                 continua = verifica_ganhador(dicionario)
             # Vez do(s) jogador(es) automatizado(s):
             else:
                 print('Mesa:', mesa)
-                print('Jogador da vez: jogador {} com {} peças'.format(jogador, len(dicionario['jogadores'][jogador])))
+                time.sleep(1)
+                print('Jogador {} com {} peças'.format(jogador, len(dicionario['jogadores'][jogador])))
+                time.sleep(1)
 
                 posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][jogador]) # Verificar se há posições possíveis.
+                time.sleep(1)
                 
-                if posicoes != []: # Há posições possíveis
+                if posicoes: # Há posições possíveis
                       aleatoria1 = random.choice(posicoes)
                       adiciona_na_mesa(dicionario['jogadores'][jogador][aleatoria1],mesa)
                       print ('Colocou:', dicionario['jogadores'][jogador][aleatoria1])
+                      time.sleep(0.5)
                       del dicionario['jogadores'][jogador][aleatoria1]
-                while posicoes == []: # Não há posições possíveis
-                    print('Não tem peças possíveis') 
+                while not posicoes: # Não há posições possíveis
+                    print('Não tem peças possíveis')
+                    time.sleep(0.5) 
                     print('Vai retirar do monte')
-                    aleatoria = random.choice(monte)
-                    x = monte.index(aleatoria)
-                    del monte[x]
-                    dicionario['jogadores'][jogador].append(aleatoria)
+                    time.sleep(0.5)
+                    if monte:
+                        aleatoria = random.choice(monte)
+                        peca_aleatoria = monte.index(aleatoria)
+                        del monte[peca_aleatoria]
+                        dicionario['jogadores'][jogador].append(aleatoria)
+                        posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][jogador])
+                        print(posicoes)
+                        time.sleep(0.5)
+                        if posicoes:
+                            peca_dicionario = dicionario['jogadores'][jogador].index(aleatoria)
+                            adiciona_na_mesa(dicionario['jogadores'][jogador][peca_dicionario],mesa)
+                            print ('Colocou: ', dicionario['jogadores'][jogador][peca_dicionario])
+                            time.sleep(0.5)
+                    else:
+                        print('Acabaram as peças do monte')
                 # Verificar se jogador automatizado ganhou  
-                continua = verifica_ganhador(dicionario)
+                continua = verifica_ganhador(dicionario['jogadores'])
 if continua == -1 and monte == []: # Situação 2: o jogo travou e vai para a soma das peças.
 
  print('O jogo fechou sem nenhum jogador zerar as peças!')
