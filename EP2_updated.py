@@ -304,7 +304,8 @@ while continua == -1: # Situação 1: o jogo continua.
                     # del dicionario['jogadores'][0][jogada]
 
                 elif monte == []:
-                    print("Passou a vez")
+                    print("Jogador não possui peças")
+                    print('Passou a vez')
             # Verificar se jogador humano ganhou  
 
             # while posicoes == []: # Não há posições possíveis
@@ -319,15 +320,33 @@ while continua == -1: # Situação 1: o jogo continua.
         if continua != -1: # # Situação 3: algum jogador ganhou.
             print('O vencedor é o jogador: ', continua)
             break
+
+if continua == -1 and monte == []: # Situação 2: o jogo travou e vai para a soma das peças.
+
+    print('O jogo fechou sem nenhum jogador zerar as peças!')
+    print('Contabilizando peças...')
+    lista_soma = []
+    for jogador in dicionario['jogadores']:
+        pecas_jogadores = []
+        for peca in dicionario['jogadores'][jogador]:
+            pecas_jogadores.append(peca)
+        soma = soma_pecas(pecas_jogadores)
+        lista_soma.append(soma)
+        print('A soma das peças do jogador {} é: '.format(jogador), soma)
+
+    for soma in lista_soma:
+        jogador = lista_soma.count(soma)
+        if jogador > 1:
+            print('O jogo empatou!')
+            break
+            
+    vencedor = max(lista_soma)
+    jogador_vencedor = lista_soma.index(vencedor)    
+    print('Vencedor(es): ', jogador_vencedor )
         
-        elif continua == -1:
-            pass
+        #elif continua == -1:
+            #pass
+
+
             # Além disso, corrigir a função de add na mesa
             # Se não há ganhadores, o monte está vazio e não tem mais jogadas possíveis, faça a soma de pontos para ver quem ganhou
-
-
-            
-    # if continua == -1 and monte == []: # Situação 2: o jogo travou e vai para a soma das peças.
-    #     print('O jogo fechou sem nenhum jogador zerar as peças!')
-    #     print('Contabilizando peças...')
-    #     print('Vencedor(es):', )
