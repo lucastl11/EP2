@@ -299,7 +299,7 @@ while continua == -1: # Situação 1: o jogo continua.
                       print ('Colocou:', dicionario['jogadores'][jogador][aleatoria1])
                       time.sleep(0.5)
                       del dicionario['jogadores'][jogador][aleatoria1]
-                while not posicoes: # Não há posições possíveis
+                while not posicoes and monte != []: # Não há posições possíveis
                     print('Não tem peças possíveis')
                     time.sleep(0.5) 
                     print('Vai retirar do monte')

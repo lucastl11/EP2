@@ -236,7 +236,7 @@ while continua == -1: # Situação 1: o jogo continua.
             
             if posicoes != []: # Há posições possíveis
                 print('Posições possíveis:', posicoes)
-                jogada = int(input('Escolha a peça:'))
+                jogada = int(input('Escolha a peça: '))
 
                 while jogada not in posicoes:
                     print('Posição inválida') # VERIFICAR CÓDIGO
@@ -244,7 +244,7 @@ while continua == -1: # Situação 1: o jogo continua.
                     jogada = int(input('Escolha a peça:'))
                 if jogada in posicoes:
                     mesa = adiciona_na_mesa(dicionario['jogadores'][0][jogada],mesa)
-                    print ('Colocou:', dicionario['jogadores'][0][jogada])
+                    print ('Colocou: ', dicionario['jogadores'][0][jogada])
                     del dicionario['jogadores'][0][jogada]
             else:
                 while posicoes_possiveis(mesa, dicionario['jogadores'][0]) == [] and monte != []: # Não há posições possíveis
@@ -253,6 +253,7 @@ while continua == -1: # Situação 1: o jogo continua.
                     dicionario['jogadores'][0].append(monte[0])
                     # retira a primeira peça do monte
                     monte.pop(0)
+                    posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][0])
 
                     # del monte[monte.index(aleatoria)]
                     # aleatoria = random.choice(monte)
@@ -260,7 +261,7 @@ while continua == -1: # Situação 1: o jogo continua.
                     # del monte[monte.index(aleatoria)]
                 if posicoes_possiveis(mesa, dicionario['jogadores'][0]) != []:
                     mesa = adiciona_na_mesa(dicionario['jogadores'][0][-1],mesa)
-                    print ('Colocou:', dicionario['jogadores'][0][-1])
+                    print ('Colocou: ', dicionario['jogadores'][0][-1])
                     dicionario['jogadores'][0].pop(-1)
                     # del dicionario['jogadores'][0][jogada]
                 
@@ -281,7 +282,7 @@ while continua == -1: # Situação 1: o jogo continua.
             if posicoes != []: # Há posições possíveis
                 aleatoria1 = random.choice(posicoes)
                 mesa = adiciona_na_mesa(dicionario['jogadores'][jogador][aleatoria1],mesa)
-                print ('Colocou:', dicionario['jogadores'][jogador][aleatoria1])
+                print ('Colocou: ', dicionario['jogadores'][jogador][aleatoria1])
                 del dicionario['jogadores'][jogador][aleatoria1]
             
             else:
@@ -291,16 +292,17 @@ while continua == -1: # Situação 1: o jogo continua.
                     dicionario['jogadores'][jogador].append(monte[0])
                     # retira a primeira peça do monte
                     monte.pop(0)
-
+                    posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][jogador])
                     # del monte[monte.index(aleatoria)]
                     # aleatoria = random.choice(monte)
                     # dicionario['jogadores'][0].append(aleatoria)
                     # del monte[monte.index(aleatoria)]
                 if posicoes_possiveis(mesa, dicionario['jogadores'][jogador]) != []:
                     mesa = adiciona_na_mesa(dicionario['jogadores'][jogador][-1],mesa)
-                    print ('Colocou:', dicionario['jogadores'][jogador][-1])
+                    print ('Colocou: ', dicionario['jogadores'][jogador][-1])
                     dicionario['jogadores'][jogador].pop(-1)
                     # del dicionario['jogadores'][0][jogada]
+
                 elif monte == []:
                     print("Passou a vez")
             # Verificar se jogador humano ganhou  
@@ -315,7 +317,7 @@ while continua == -1: # Situação 1: o jogo continua.
 
         continua = verifica_ganhador(dicionario['jogadores'])
         if continua != -1: # # Situação 3: algum jogador ganhou.
-            print('O vencedor é:', continua)
+            print('O vencedor é o jogador: ', continua)
             break
         
         elif continua == -1:
