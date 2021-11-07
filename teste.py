@@ -321,12 +321,31 @@ while continua == -1: # Situação 1: o jogo continua.
                         print('Acabaram as peças do monte')
                 # Verificar se jogador automatizado ganhou  
             continua = verifica_ganhador(dicionario['jogadores'])
+
+            if continua != -1: # # Situação 3: algum jogador ganhou.
+                print('O jogo acabou!')
+                print('O vencedor é o jogador: ', continua)
+                break
+
 if continua == -1 and monte == []: # Situação 2: o jogo travou e vai para a soma das peças.
 
- print('O jogo fechou sem nenhum jogador zerar as peças!')
- print('Contabilizando peças...')
- print('Vencedor(es): ', )
+    print('O jogo fechou sem nenhum jogador zerar as peças!')
+    print('Contabilizando peças...')
+    lista_soma = []
+    for jogador in dicionario['jogadores']:
+        pecas_jogadores = []
+        for peca in dicionario['jogadores'][jogador]:
+            pecas_jogadores.append(peca)
+        soma = soma_pecas(pecas_jogadores)
+        lista_soma.append(soma)
+        print('A soma das peças do jogador {} é: '.format(jogador), soma)
 
-if continua != -1: # # Situação 3: algum jogador ganhou.
-    print('O jogo acabou!')
-    print('O vencedor é o jogador: ', continua)
+    for soma in lista_soma:
+        jogador = lista_soma.count(soma)
+        if jogador > 1:
+            print('O jogo empatou!')
+            break
+            
+    vencedor = max(lista_soma)
+    jogador_vencedor = lista_soma.index(vencedor)    
+    print('Vencedor(es): ', jogador_vencedor )
