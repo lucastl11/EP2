@@ -226,8 +226,11 @@ for jogador in dicionario['jogadores']:
 random.shuffle(lista_jogadores)
 print('A ordem do jogo será: ', lista_jogadores)
 time.sleep(0.75)
+print('Você é o jogaddor 0')
+time.sleep(0.75)
 
 continua = -1
+lista_posicoes_jogadores = [0] * len(lista_jogadores)
 while continua == -1: # Situação 1: o jogo continua.
     for jogador in lista_jogadores:
 
@@ -287,6 +290,8 @@ while continua == -1: # Situação 1: o jogo continua.
                     print("Não há peças no monte")
                     print("Jogador passou a vez")
                     time.sleep(1.5)
+
+            lista_posicoes_jogadores[0] = posicoes
             # Verificar se jogador humano ganhou  
             
 
@@ -336,6 +341,9 @@ while continua == -1: # Situação 1: o jogo continua.
                     time.sleep(0.25)
                     print('Passou a vez')
                     time.sleep(1)
+
+            lista_posicoes_jogadores[jogador] = posicoes
+
             # Verificar se jogador humano ganhou  
 
             # while posicoes == []: # Não há posições possíveis
@@ -347,11 +355,17 @@ while continua == -1: # Situação 1: o jogo continua.
             # Verificar se jogador automatizado ganhou
 
         continua = verifica_ganhador(dicionario['jogadores'])
+
+        verifica_lista_posicoes = all(elem == [] for elem in lista_posicoes_jogadores)
+        resultado = False
+        if verifica_lista_posicoes:
+            resultado = True
+
         if continua != -1: # # Situação 3: algum jogador ganhou.
             print('O vencedor é o jogador: ', continua)
             break
 
-        elif continua == -1 and monte == [] and posicoes_possiveis(mesa, dicionario['jogadores'][jogador]) == []: # Situação 2: o jogo travou e vai para a soma das peças.        
+        elif continua == -1 and monte == [] and resultado == True: # Situação 2: o jogo travou e vai para a soma das peças.        
             print('O jogo fechou sem nenhum jogador zerar as peças!')
             print('Contabilizando peças...')
             
@@ -370,6 +384,8 @@ while continua == -1: # Situação 1: o jogo continua.
                 # 2 jogadores vencem:     
                 if soma0 == soma1:
                     print('Vencedor(es) é(são): 0, 1')
+
+                break
 
             if jogadores == 3:
 
@@ -397,7 +413,9 @@ while continua == -1: # Situação 1: o jogo continua.
 
                 # 3 jogadores vencem:          
                 if soma0 == soma1 and soma0 == soma2:
-                    print('Vencedor(es) é(são): 0, 1, 2')    
+                    print('Vencedor(es) é(são): 0, 1, 2') 
+
+                break   
 
             if jogadores == 4:
 
@@ -443,7 +461,9 @@ while continua == -1: # Situação 1: o jogo continua.
                 # 4 jogadores vencem:
                 if soma0 == soma1 and soma0 == soma2 and soma0 == soma3:
                     print('Vencedor(es) é(são): 0, 1, 2, 3')
+
                 break          # Se não há ganhadores,  monte está vazio e não tem mais jogadas possíveis, faça a soma de pontos para ver quem ganhou
+
         elif continua == -1:
             pass 
    
