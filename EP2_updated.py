@@ -237,7 +237,7 @@ while continua == -1: # Situação 1: o jogo continua.
             print('Mesa:', mesa)
             print('\n')
             time.sleep(1)
-            print('Jogador da vez: você com {} peças'.format(len(dicionario['jogadores'][0])))
+            print('Jogador da vez: você está com {} peças'.format(len(dicionario['jogadores'][0])))
             time.sleep(0.75)
             print(dicionario['jogadores'][0])
             time.sleep(0.75)
@@ -252,9 +252,8 @@ while continua == -1: # Situação 1: o jogo continua.
 
                 while jogada not in posicoes:
                     print('Posição inválida') # VERIFICAR CÓDIGO
-                    time.sleep(0.25)
                     print('Escolha entre as posições possíveis!')
-                    time.sleep(0.75)
+                    time.sleep(1)
                     jogada = int(input('Escolha a peça:'))
                     time.sleep(0.75)
                 if jogada in posicoes:
@@ -266,9 +265,8 @@ while continua == -1: # Situação 1: o jogo continua.
                 while posicoes_possiveis(mesa, dicionario['jogadores'][0]) == [] and monte != []: # Não há posições possíveis
                     print('\n')
                     print('Não tem peças possíveis') 
-                    time.sleep(0.25)
                     print('Retirar do monte')
-                    time.sleep(1)
+                    time.sleep(1.5)
                     dicionario['jogadores'][0].append(monte[0])
                     # retira a primeira peça do monte
                     monte.pop(0)
@@ -286,10 +284,9 @@ while continua == -1: # Situação 1: o jogo continua.
                     # del dicionario['jogadores'][0][jogada]
                 
                 elif monte == []:
-                    print("Jogador não possui peças")
-                    time.sleep(0.25)
-                    print("Passou a vez")
-                    time.sleep(1)
+                    print("Não há peças no monte")
+                    print("Jogador passou a vez")
+                    time.sleep(1.5)
             # Verificar se jogador humano ganhou  
             
 
@@ -299,7 +296,7 @@ while continua == -1: # Situação 1: o jogo continua.
             print('Mesa:', mesa)
             print('\n')
             time.sleep(1)
-            print('Jogador da vez: jogador {} com {} peças'.format(jogador, len(dicionario['jogadores'][jogador])))
+            print('Jogador da vez: jogador {} está com {} peças'.format(jogador, len(dicionario['jogadores'][jogador])))
             time.sleep(0.75)
 
             posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][jogador]) # Verificar se há posições possíveis.
