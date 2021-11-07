@@ -1,0 +1,88 @@
+
+if jogadores == 2:
+
+    soma0 = soma_pecas(dicionario['jogadores'][0])
+    soma1 = soma_pecas(dicionario['jogadores'][1])
+    
+    # 1 jogador vence:
+    if soma0 < soma1:
+        print('Vencedor(es) é(são): 0')
+    if soma1 < soma0:
+        print('Vencedor(es) é(são): 1')
+    # 2 jogadores vencem:     
+    if soma0 == soma1:
+        print('Vencedor(es) é(são): 0, 1')
+
+if jogadores == 3:
+
+    soma0 = soma_pecas(dicionario['jogadores'][0])
+    soma1 = soma_pecas(dicionario['jogadores'][1])
+    soma2 = soma_pecas(dicionario['jogadores'][2])
+    
+    # 1 jogador vence:
+    if soma0 < soma1 and soma0 < soma2:
+        print('Vencedor(es) é(são): 0')
+    if soma1 < soma0 and soma1 < soma2:
+        print('Vencedor(es) é(são): 1')
+    if soma2 < soma0 and soma2 < soma1:
+        print('Vencedor(es) é(são): 2') 
+    if soma2 < soma0 and soma2 < soma1:
+        print('Vencedor(es) é(são): 2') 
+
+    # 2 jogadores vencem:          
+    if soma0 == soma1 and soma0 < soma2:
+        print('Vencedor(es) é(são): 0, 1')    
+    if soma0 == soma2 and soma0 < soma1:
+        print('Vencedor(es) é(são): 0, 2')    
+    if soma1 == soma2 and soma1 < soma0:
+        print('Vencedor(es) é(são): 1, 2')  
+
+    # 3 jogadores vencem:          
+    if soma0 == soma1 and soma0 == soma2:
+        print('Vencedor(es) é(são): 0, 1, 2')    
+             
+if jogadores == 4:
+
+    soma0 = soma_pecas(dicionario['jogadores'][0])
+    soma1 = soma_pecas(dicionario['jogadores'][1])
+    soma2 = soma_pecas(dicionario['jogadores'][2])
+    soma3 = soma_pecas(dicionario['jogadores'][3])
+
+    # 1 jogador vence:
+    if soma0 < soma1 and soma0 < soma2 and soma0 < soma3:
+        print('Vencedor(es) é(são): 0')
+    if soma1 < soma0 and soma1 < soma2 and soma1 < soma3:
+        print('Vencedor(es) é(são): 1')
+    if soma2 < soma0 and soma2 < soma1 and soma2 < soma3:
+        print('Vencedor(es) é(são): 2') 
+    if soma3 < soma0 and soma3 < soma1 and soma3 < soma2:
+        print('Vencedor(es) é(são): 3') 
+        
+    # 2 jogadores vencem:
+    if soma0 == soma1 and soma0 < soma2 and soma0 < soma3:
+        print('Vencedor(es) é(são): 0, 1')    
+    if soma0 == soma2 and soma0 < soma1 and soma0 < soma3:
+        print('Vencedor(es) é(são): 0, 2') 
+    if soma0 == soma3 and soma0 < soma1 and soma0 < soma2:
+        print('Vencedor(es) é(são): 0, 3')        
+    if soma1 == soma2 and soma1 < soma0 and soma1 < soma3:
+        print('Vencedor(es) é(são): 1, 2')    
+    if soma1 == soma3 and soma1 < soma0 and soma1 < soma2:
+        print('Vencedor(es) é(são): 1, 3') 
+    if soma2 == soma3 and soma2 < soma0 and soma2 < soma1:
+        print('Vencedor(es) é(são): 2, 3')  
+
+    # 3 jogadores vencem:
+    if soma0 == soma1 and soma0 == soma2 and soma0 < soma3:
+        print('Vencedor(es) é(são): 0, 1, 2')    
+    if soma0 == soma1 and soma0 == soma3 and soma0 < soma2:
+        print('Vencedor(es) é(são): 0, 1, 3')    
+    if soma0 == soma2 and soma0 == soma3 and soma0 < soma1:
+        print('Vencedor(es) é(são): 0, 2, 3')    
+    if soma1 == soma2 and soma1 == soma3 and soma1 < soma0:
+        print('Vencedor(es) é(são): 1, 2, 3')    
+                       
+    # 4 jogadores vencem:
+    if soma0 == soma1 and soma0 == soma2 and soma0 == soma3:
+        print('Vencedor(es) é(são): 0, 1, 2, 3')    
+    
