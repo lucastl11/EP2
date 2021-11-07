@@ -351,14 +351,14 @@ while continua == -1: # Situação 1: o jogo continua.
             print('O vencedor é o jogador: ', continua)
             break
 
-        elif continua == -1 and monte == [] and posicoes_possiveis(mesa, dicionario['jogadores'][jogador]) == [] for jogador in lista_jogadores: : # Situação 2: o jogo travou e vai para a soma das peças.        
+        elif continua == -1 and monte == [] and posicoes_possiveis(mesa, dicionario['jogadores'][jogador]) == []: # Situação 2: o jogo travou e vai para a soma das peças.        
             print('O jogo fechou sem nenhum jogador zerar as peças!')
             print('Contabilizando peças...')
             
             # Aqui entra parte "empates"
             
             break          # Se não há ganhadores,  monte está vazio e não tem mais jogadas possíveis, faça a soma de pontos para ver quem ganhou
-         elif continua == -1:
+        elif continua == -1:
             pass 
    
         #elif continua == -1:
