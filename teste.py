@@ -171,36 +171,24 @@ def posicoes_possiveis(mesa, pecas):
 
 # EP2.6 - Adicionando peças a mesa num jogo de dominó
         
-def adiciona_na_mesa(peca,mesa):
-    if not mesa:
-        mesa.append(peca)
+def adiciona_na_mesa(peca, mesa):
+    if mesa == []:
+        mesa = [peca]
         return mesa
-        
-    ##Ultima peca e primeira peca   
-    up = mesa[-1][1]
-    pp = mesa[0][0]    
-    
-    ##Para a esquerda ou direita
-    for p in peca:
-        if p == pp or p == up:
-            if p in mesa[0]:
-                posicao_m = mesa[0].index(p)
-                if posicao_m == 0:
-                    if p == peca[1]:
-                        mesa.insert(0,peca)
-                    if p == peca[0]:
-                        peca[0],peca[1] = peca[1], peca[0]
-                        mesa.insert(0,peca)
-            if p in mesa[-1]:
-                posicao_m = mesa[-1].index(p)
-                if posicao_m == 1: 
-                    if p == peca[0]:
-                        mesa.append(peca)
-                    if p == peca[1]:
-                        peca[0],peca[1] = peca[1], peca[0]
-                        mesa.append(peca)
-        
+    ponta_esquerda = mesa[0][0]
+    ponta_direita = mesa[-1][1]
+    if peca[1] == ponta_esquerda:
+        mesa = [peca] + mesa
+    elif peca[0] == ponta_esquerda:
+        peca = [peca[1], peca[0]]
+        mesa = [peca] + mesa
+    elif peca[0] == ponta_direita:
+        mesa = mesa + [peca]
+    else:
+        peca = [peca[1], peca[0]]
+        mesa = mesa + [peca]
     return mesa
+        
 
 # Início do jogo
 
