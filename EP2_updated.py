@@ -254,7 +254,7 @@ while continua == -1: # Situação 1: o jogo continua.
                 time.sleep(0.75)
 
                 while jogada not in posicoes:
-                    print('Posição inválida') # VERIFICAR CÓDIGO
+                    print('Posição inválida') 
                     print('Escolha entre as posições possíveis!')
                     time.sleep(1)
                     jogada = int(input('Escolha a peça:'))
@@ -275,17 +275,14 @@ while continua == -1: # Situação 1: o jogo continua.
                     # retira a primeira peça do monte
                     monte.pop(0)
                     posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][0])
-
-                    # del monte[monte.index(aleatoria)]
-                    # aleatoria = random.choice(monte)
-                    # dicionario['jogadores'][0].append(aleatoria)
-                    # del monte[monte.index(aleatoria)]
+                    
+                    
                 if posicoes_possiveis(mesa, dicionario['jogadores'][0]) != []:
                     mesa = adiciona_na_mesa(dicionario['jogadores'][0][-1],mesa)
                     print ('Colocou: ', dicionario['jogadores'][0][-1])
                     time.sleep(0.75)
                     dicionario['jogadores'][0].pop(-1)
-                    # del dicionario['jogadores'][0][jogada]
+                    
                 
                 elif monte == []:
                     print('\n')
@@ -326,16 +323,13 @@ while continua == -1: # Situação 1: o jogo continua.
                     # retira a primeira peça do monte
                     monte.pop(0)
                     posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][jogador])
-                    # del monte[monte.index(aleatoria)]
-                    # aleatoria = random.choice(monte)
-                    # dicionario['jogadores'][0].append(aleatoria)
-                    # del monte[monte.index(aleatoria)]
+                   
                 if posicoes_possiveis(mesa, dicionario['jogadores'][jogador]) != []:
                     mesa = adiciona_na_mesa(dicionario['jogadores'][jogador][-1],mesa)
                     print ('Colocou: ', dicionario['jogadores'][jogador][-1])
                     time.sleep(0.75)
                     dicionario['jogadores'][jogador].pop(-1)
-                    # del dicionario['jogadores'][0][jogada]
+                    
 
                 elif monte == []:
                     print('\n')
@@ -348,14 +342,6 @@ while continua == -1: # Situação 1: o jogo continua.
 
             # Verificar se jogador humano ganhou  
 
-            # while posicoes == []: # Não há posições possíveis
-            #     print('Não tem peças possíveis') 
-            #     print('Vai retirar do monte')
-            #     aleatoria2 = random.choice(monte)
-            #     dicionario['jogadores'][jogador].append(aleatoria2)
-            #     del monte[monte.index(aleatoria2)]
-            # Verificar se jogador automatizado ganhou
-
         continua = verifica_ganhador(dicionario['jogadores'])
 
         verifica_lista_posicoes = all(elem == [] for elem in lista_posicoes_jogadores)
@@ -363,7 +349,7 @@ while continua == -1: # Situação 1: o jogo continua.
         if verifica_lista_posicoes:
             resultado = True
 
-        if continua != -1: # # Situação 3: algum jogador ganhou.
+        if continua != -1:  # Situação 3: algum jogador ganhou.
             print('O vencedor é o jogador: ', continua)
             break
 
@@ -374,7 +360,7 @@ while continua == -1: # Situação 1: o jogo continua.
             print('Contabilizando peças...')
             time.sleep(2)
             
-            # Aqui entra parte "empates"
+            # Aqui entra na parte "empates"
             
             if jogadores == 2:
 
@@ -471,15 +457,14 @@ while continua == -1: # Situação 1: o jogo continua.
                 
                 continua = -2
                 break 
-                         # Se não há ganhadores,  monte está vazio e não tem mais jogadas possíveis, faça a soma de pontos para ver quem ganhou
+                        
     
 
         elif continua == -1:
             pass 
    
-        #elif continua == -1:
-            #pass
+       
 
 
-            # Além disso, corrigir a função de add na mesa
-            # Se não há ganhadores, o monte está vazio e não tem mais jogadas possíveis, faça a soma de pontos para ver quem ganhou
+           
+           
