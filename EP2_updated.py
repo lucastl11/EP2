@@ -217,6 +217,9 @@ for jogador in dicionario['jogadores']:
 
 # Início das jogadas
 
+random.shuffle(lista_jogadores)
+print('A ordem do jogo será: ', lista_jogadores)
+
 continua = -1
 while continua == -1: # Situação 1: o jogo continua.
     for jogador in lista_jogadores:

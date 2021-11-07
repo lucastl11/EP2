@@ -256,7 +256,7 @@ while continua == -1: # Situação 1: o jogo continua.
                        print('Escolha entre as posições possíveis!')
                        jogada = int(input('Escolha a peça: '))
                    if jogada in posicoes:
-                       adiciona_na_mesa(dicionario['jogadores'][0][jogada],mesa)
+                       mesa = adiciona_na_mesa(dicionario['jogadores'][0][jogada],mesa)
                        print ('Colocou: ', dicionario['jogadores'][0][jogada])
                        time.sleep(0.5)
                        del dicionario['jogadores'][0][jogada]
@@ -276,7 +276,7 @@ while continua == -1: # Situação 1: o jogo continua.
                         print(posicoes)
                         if posicoes:
                             peca_dicionario = dicionario['jogadores'][0].index(aleatoria)
-                            adiciona_na_mesa(dicionario['jogadores'][0][peca_dicionario],mesa)
+                            mesa = adiciona_na_mesa(dicionario['jogadores'][0][peca_dicionario],mesa)
                             print ('Colocou: ', dicionario['jogadores'][0][peca_dicionario])
                             time.sleep(0.5)
                     else:
@@ -295,7 +295,7 @@ while continua == -1: # Situação 1: o jogo continua.
                 
                 if posicoes: # Há posições possíveis
                       aleatoria1 = random.choice(posicoes)
-                      adiciona_na_mesa(dicionario['jogadores'][jogador][aleatoria1],mesa)
+                      mesa = adiciona_na_mesa(dicionario['jogadores'][jogador][aleatoria1],mesa)
                       print ('Colocou:', dicionario['jogadores'][jogador][aleatoria1])
                       time.sleep(0.5)
                       del dicionario['jogadores'][jogador][aleatoria1]
@@ -314,7 +314,7 @@ while continua == -1: # Situação 1: o jogo continua.
                         time.sleep(0.5)
                         if posicoes:
                             peca_dicionario = dicionario['jogadores'][jogador].index(aleatoria)
-                            adiciona_na_mesa(dicionario['jogadores'][jogador][peca_dicionario],mesa)
+                            mesa = adiciona_na_mesa(dicionario['jogadores'][jogador][peca_dicionario],mesa)
                             print ('Colocou: ', dicionario['jogadores'][jogador][peca_dicionario])
                             time.sleep(0.5)
                     else:
