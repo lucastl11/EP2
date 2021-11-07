@@ -270,8 +270,7 @@ while continua == -1: # Situação 1: o jogo continua.
                     print('Não tem peças possíveis') 
                     print('Retirar do monte')
                     time.sleep(0.75)
-                    pergunta = input("Press Enter to continue...")
-                    time.sleep(1.5)
+                    pergunta = input("Pressione Enter para continuar...")
                     dicionario['jogadores'][0].append(monte[0])
                     # retira a primeira peça do monte
                     monte.pop(0)
