@@ -281,6 +281,7 @@ while continua == -1: # Situação 1: o jogo continua.
                         aleatoria = random.choice(monte)
                         peca_aleatoria = monte.index(aleatoria)
                         dicionario['jogadores'][0].append(aleatoria)
+                        print(dicionario['jogadores'][0])
                         del monte[peca_aleatoria]
                         posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][0])
                         time.sleep(0.5)
@@ -331,7 +332,7 @@ while continua == -1: # Situação 1: o jogo continua.
                     else:
                         print('Acabaram as peças do monte')
                 # Verificar se jogador automatizado ganhou  
-                continua = verifica_ganhador(dicionario['jogadores'])
+            continua = verifica_ganhador(dicionario['jogadores'])
 if continua == -1 and monte == []: # Situação 2: o jogo travou e vai para a soma das peças.
 
  print('O jogo fechou sem nenhum jogador zerar as peças!')
@@ -339,4 +340,5 @@ if continua == -1 and monte == []: # Situação 2: o jogo travou e vai para a so
  print('Vencedor(es): ', )
 
 if continua != -1: # # Situação 3: algum jogador ganhou.
-   print('O vencedor é :', continua)
+    print('O jogo acabou!')
+    print('O vencedor é o jogador: ', continua)
