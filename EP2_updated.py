@@ -269,6 +269,8 @@ while continua == -1: # Situação 1: o jogo continua.
                     print('\n')
                     print('Não tem peças possíveis') 
                     print('Retirar do monte')
+                    time.sleep(0.75)
+                    pergunta = input("Press Enter to continue...")
                     time.sleep(1.5)
                     dicionario['jogadores'][0].append(monte[0])
                     # retira a primeira peça do monte
@@ -287,6 +289,7 @@ while continua == -1: # Situação 1: o jogo continua.
                     # del dicionario['jogadores'][0][jogada]
                 
                 elif monte == []:
+                    print('\n')
                     print("Não há peças no monte")
                     print("Jogador passou a vez")
                     time.sleep(1.5)
@@ -365,9 +368,12 @@ while continua == -1: # Situação 1: o jogo continua.
             print('O vencedor é o jogador: ', continua)
             break
 
-        elif continua == -1 and monte == [] and resultado == True: # Situação 2: o jogo travou e vai para a soma das peças.        
+        elif continua == -1 and monte == [] and resultado == True: # Situação 2: o jogo travou e vai para a soma das peças. 
+            print('\n')       
             print('O jogo fechou sem nenhum jogador zerar as peças!')
+            time.sleep(0.75)
             print('Contabilizando peças...')
+            time.sleep(2)
             
             # Aqui entra parte "empates"
             
@@ -385,6 +391,7 @@ while continua == -1: # Situação 1: o jogo continua.
                 if soma0 == soma1:
                     print('Vencedor(es) é(são): 0, 1')
 
+                continua = -2
                 break
 
             if jogadores == 3:
@@ -415,6 +422,7 @@ while continua == -1: # Situação 1: o jogo continua.
                 if soma0 == soma1 and soma0 == soma2:
                     print('Vencedor(es) é(são): 0, 1, 2') 
 
+                continua = -2
                 break   
 
             if jogadores == 4:
@@ -461,8 +469,11 @@ while continua == -1: # Situação 1: o jogo continua.
                 # 4 jogadores vencem:
                 if soma0 == soma1 and soma0 == soma2 and soma0 == soma3:
                     print('Vencedor(es) é(são): 0, 1, 2, 3')
-
-                break          # Se não há ganhadores,  monte está vazio e não tem mais jogadas possíveis, faça a soma de pontos para ver quem ganhou
+                
+                continua = -2
+                break 
+                         # Se não há ganhadores,  monte está vazio e não tem mais jogadas possíveis, faça a soma de pontos para ver quem ganhou
+    
 
         elif continua == -1:
             pass 
