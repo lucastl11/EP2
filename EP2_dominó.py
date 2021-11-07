@@ -226,7 +226,7 @@ for jogador in dicionario['jogadores']:
 random.shuffle(lista_jogadores)
 print('A ordem do jogo será: ', lista_jogadores)
 time.sleep(0.75)
-print('Você é o jogaddor 0')
+print('Você é o jogador 0')
 time.sleep(0.75)
 
 continua = -1
@@ -240,7 +240,7 @@ while continua == -1: # Situação 1: o jogo continua.
             print('Mesa:', mesa)
             print('\n')
             time.sleep(1)
-            print('Jogador da vez: você está com {} peças'.format(len(dicionario['jogadores'][0])))
+            print('Jogador da vez: você com {} peças'.format(len(dicionario['jogadores'][0])))
             time.sleep(0.75)
             print(dicionario['jogadores'][0])
             time.sleep(0.75)
@@ -300,7 +300,7 @@ while continua == -1: # Situação 1: o jogo continua.
             print('Mesa:', mesa)
             print('\n')
             time.sleep(1)
-            print('Jogador da vez: jogador {} está com {} peças'.format(jogador, len(dicionario['jogadores'][jogador])))
+            print('Jogador da vez: jogador {} com {} peças'.format(jogador, len(dicionario['jogadores'][jogador])))
             time.sleep(0.75)
 
             posicoes = posicoes_possiveis(mesa, dicionario['jogadores'][jogador]) # Verificar se há posições possíveis.
